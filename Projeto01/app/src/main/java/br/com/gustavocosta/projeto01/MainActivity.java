@@ -15,6 +15,7 @@ import smile.regression.OLS;
 
 public class MainActivity extends AppCompatActivity {
 
+    // Variáveis para a conexão com a interface gráfica
     private EditText diasEditText, tempEditText;
     private OLS ols;
     private TextView resultadoTextView;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //
         diasEditText = findViewById(R.id.dias_edittext);
         tempEditText = findViewById(R.id.temp_edittext);
         resultadoTextView = findViewById(R.id.resultado_textView);
