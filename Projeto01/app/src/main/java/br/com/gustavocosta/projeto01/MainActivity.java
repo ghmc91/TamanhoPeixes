@@ -25,22 +25,30 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //
+        // Conectando variáveis do layout com as do código
         diasEditText = findViewById(R.id.dias_edittext);
         tempEditText = findViewById(R.id.temp_edittext);
         resultadoTextView = findViewById(R.id.resultado_textView);
+
+        // Chamando função para carregar o modelo de predição
         ols = carregarModelo();
+
+        //Verificação
         if (ols == null) {
             finish();
         }
 
     }
 
+    // Função para carregar o modelo de predição
     private OLS carregarModelo() {
         try {
+            //Classe InputStream recebe o modelo já treinado
             InputStream is = getResources().openRawResource(R.raw.modelo);
+            // Convertendo o arquivo em um objeto
             ObjectInputStream ois = new ObjectInputStream(is);
             OLS ols = (OLS) ois.readObject();
+            // Logs de Informação
             Log.i("dsa", "Modelo carregado!");
             Log.i("dsa", "R2: " + ols.RSquared());
             return ols;
@@ -51,7 +59,8 @@ public class MainActivity extends AppCompatActivity {
         return null;
     }
 
-
+    //Função que recebe os dados digitados pelo usuário e retorna o resultado
+    // da predição
     public void processar(View v) {
         //Toast.makeText(this, "Clicou no botão", Toast.LENGTH_SHORT).show();
         double dias = 0, temperatura = 0;
